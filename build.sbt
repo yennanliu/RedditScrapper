@@ -27,7 +27,8 @@ libraryDependencies ++= Seq(
 
   // json op
   // https://index.scala-lang.org/spray/spray-json/spray-json/1.2.5?target=_2.10
-  "io.spray" %%  "spray-json" % "1.3.6"
+  "io.spray" %%  "spray-json" % "1.3.6",
+  "org.json4s" %% "json4s-jackson" % "4.0.1"
 )
 
 conflictManager := ConflictManager.latestRevision

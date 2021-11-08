@@ -14,7 +14,7 @@ object SparkReadEndPoint1 extends App {
   import spark.implicits._
 
   val url1 = "https://api.pushshift.io/reddit/search/comment/?q=scala"
-  val rawData1:String = scala.io.Source.fromURL(url1).mkString
+  val rawData1 = scala.io.Source.fromURL(url1).toList
   println(rawData1)
 
   //println(rawData1)
