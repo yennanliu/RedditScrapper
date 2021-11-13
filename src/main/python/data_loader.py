@@ -5,22 +5,24 @@ def get_data(url):
     json_data = r.json()
     return json_data['data']
 
+def save_data(json_data, file_name):
+ with open(file_name, 'a') as f:
+    for i in range(len(json_data)):
+        try:
+            print (json_data[i])
+            f.write(json.dumps(json_data[i]) + "\n")
+        except Exception as e:
+            print ("save file failed")  
 
-url = "https://api.pushshift.io/reddit/search/comment/?subreddit=TIdaL"
-data1 = get_data(url)
+if __name__ == '__main__':
+    print ("collect comment data ...")
+    url = "https://api.pushshift.io/reddit/search/comment/?subreddit=TIdaL"
+    data_comment = get_data(url)
+    #save_data(data_comment, "../../../data/raw/comment.json")
+    save_data(data_comment, "data/raw/comment.json")
 
-with open("output.json", 'a') as f:
-    for record in data1:
-        print (record)
-        f.write(json.dumps(record))
-
-
-# r = requests.get(url)
-# json_data = r.json()
-# records = json_data['data']
-
-
-# url2 = "https://api.pushshift.io/reddit/search/submission/?q=TIdaL"
-# r2= requests.get(url2)
-# json_data2 = r2.json()
-# records2 = json_data2['data']
+    print ("collect submission data ...")
+    url = "https://api.pushshift.io/reddit/search/submission/?q=TIdaL"
+    data_comment = get_data(url)
+    #save_data(data_comment, "../../../data/raw/comment.json")
+    save_data(data_comment, "data/raw/submission.json")
