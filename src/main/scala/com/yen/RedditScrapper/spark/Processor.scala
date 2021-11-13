@@ -30,6 +30,6 @@ object Processor extends App {
 
   /** Save */
   // save to parquet
-  commentDF.write.parquet("/Users/yennanliu/RedditScrapper/data/output/comment.parquet")
-  submissionDF.write.parquet("/Users/yennanliu/RedditScrapper/data/output/submission.parquet")
+  commentDF.write.parquet("/Users/yennanliu/RedditScrapper/data/output/comment")
+  submissionDF.write.parquet("/Users/yennanliu/RedditScrapper/data/output/submission")
 }
