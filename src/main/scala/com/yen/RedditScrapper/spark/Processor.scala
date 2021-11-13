@@ -4,6 +4,7 @@ import org.apache.spark.SparkContext
 import org.apache.spark.sql.{SparkSession}
 
 import com.yen.RedditScrapper.common.DFBuilder
+import com.yen.RedditScrapper.model.Schema
 
 object Processor extends App {
 
@@ -14,18 +15,17 @@ object Processor extends App {
   import org.apache.spark.sql.functions._
 
   /** Load */
-
   val df_builder = new DFBuilder()
+  val schema = new Schema()
+
   // comment
   val commentRawPath = "/Users/yennanliu/RedditScrapper/data/raw/comment.json"
-  val commentFilterCols:List[String] = List("body","id","score","author","author_fullname","parent_id","created_utc")
-  val commentDF = df_builder.prepareDF(spark, commentRawPath, commentFilterCols)
+  val commentDF = df_builder.prepareDF(spark, commentRawPath, schema.commentFilterCols)
   commentDF.show()
 
   // submission
   val submissionRawPath = "/Users/yennanliu/RedditScrapper/data/raw/submission.json"
-  val submissionFilterCols:List[String] = List("title","selftext","id","upvote_ratio","num_comments","link_flair_text","score","created_utc","author","author_fullname","retrieved_on")
-  val submissionDF = df_builder.prepareDF(spark, submissionRawPath, submissionFilterCols)
+  val submissionDF = df_builder.prepareDF(spark, submissionRawPath, schema.submissionFilterCols)
   submissionDF.show()
 
   /** Save */
