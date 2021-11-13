@@ -1,4 +1,4 @@
-package com.yen.RedditScrapper.dev.spark
+package com.yen.RedditScrapper.spark
 
 import org.apache.spark.SparkContext
 import org.apache.spark.sql.SparkSession
