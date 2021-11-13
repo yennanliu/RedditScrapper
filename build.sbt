@@ -31,6 +31,14 @@ libraryDependencies ++= Seq(
   //"org.json4s" %% "json4s-jackson"
 )
 
+dependencyOverrides ++= {
+  Seq(
+    "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.6.7.1",
+    "com.fasterxml.jackson.core" % "jackson-databind" % "2.6.7",
+    "com.fasterxml.jackson.core" % "jackson-core" % "2.6.7"
+  )
+}
+
 conflictManager := ConflictManager.latestRevision
 
 assemblyMergeStrategy in assembly := {
