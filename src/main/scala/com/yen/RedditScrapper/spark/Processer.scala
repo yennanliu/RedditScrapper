@@ -10,7 +10,7 @@ object Processer extends App {
 
   import spark.implicits._
 
-  // load raw data
+  /** Load */
 
   // comment
   val commentRawPath = "/Users/yennanliu/RedditScrapper/data/raw/comment.json"
@@ -23,4 +23,9 @@ object Processer extends App {
   val submissionFilterCols = ("title","selftext","id","upvote_ratio","num_comments","link_flair_text","score","created_utc","author","author_fullname","retrieved_on")
   val submissionDF = spark.read.json(submissionRawPath)select("title","selftext","id","upvote_ratio","num_comments","link_flair_text","score","created_utc","author","author_fullname","retrieved_on")
   submissionDF.show()
+
+  /** Save */
+  // save to parquet
+  commentDF.write.parquet("/Users/yennanliu/RedditScrapper/data/output/comment.parquet")
+  submissionDF.write.parquet("/Users/yennanliu/RedditScrapper/data/output/submission.parquet")
 }
