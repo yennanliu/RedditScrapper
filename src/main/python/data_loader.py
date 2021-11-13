@@ -1,18 +1,23 @@
-import requests, json
+import requests, json, logging
 
 def get_data(url):
     r = requests.get(url)
-    json_data = r.json()
-    return json_data['data']
+    try:
+        json_data = r.json()
+        logging.info("load from Reddit API OK")
+        return json_data['data']
+    except Exception as e:
+        logging.error("save from Reddit API failed")
 
 def save_data(json_data, file_name):
- with open(file_name, 'a') as f:
-    for i in range(len(json_data)):
-        try:
-            print (json_data[i])
-            f.write(json.dumps(json_data[i]) + "\n")
-        except Exception as e:
-            print ("save file failed")  
+    with open(file_name, 'a') as f:
+        for i in range(len(json_data)):
+            try:
+                print (json_data[i])
+                f.write(json.dumps(json_data[i]) + "\n")
+                logging.info("save file OK")
+            except Exception as e:
+                logging.error("save file failed")
 
 if __name__ == '__main__':
     print ("collect comment data ...")
