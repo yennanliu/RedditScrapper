@@ -15,12 +15,6 @@ libraryDependencies ++= Seq(
   "org.scalactic" %% "scalactic" % "3.1.0",
   "org.apache.spark" %% "spark-sql" % sparkVersion,
 
-  // spark-avro
-  "org.apache.spark" %% "spark-avro" % sparkVersion,
-
-  // others 
-  "org.apache.commons" % "commons-text" % "1.8",
-
   // test
   "org.scalatest" %% "scalatest" % "3.1.1" % "test",
 
