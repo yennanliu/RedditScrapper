@@ -1,4 +1,6 @@
-echo "yyyymmdd: $1"
+#!/bin/sh
+yyyymmdd=$1
+echo "yyyymmdd :" $yyyymmdd
 
 echo '>>> Step 1 : collect data  (data_loader.py) ...'
 python src/main/python/data_loader.py -yyyymmdd $yyyymmdd
