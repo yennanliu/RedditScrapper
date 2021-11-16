@@ -1,5 +1,11 @@
-import requests, json, logging, argparse
+import requests, json, logging, argparse, os
 
+
+SRC_BASE_PATH = "data/raw/{_date}"
+DEST_BASE_PATH = "data/output/{_date}"
+
+URL_COMMENT = "https://api.pushshift.io/reddit/search/comment/?subreddit=TIdaL"
+URL_SUBMISSION =  "https://api.pushshift.io/reddit/search/submission/?q=TIdaL"
 
 def arg_parser():
     parser = argparse.ArgumentParser(prog='myprogram')
@@ -7,7 +13,6 @@ def arg_parser():
     args = parser.parse_args()
     #print(args)
     return args
-
 
 def get_data(url):
     r = requests.get(url)
@@ -18,8 +23,18 @@ def get_data(url):
     except Exception as e:
         logging.error("save from Reddit API failed")
 
+def check_path_exist(path):
+    print ("========== check_path_exist ==========")
+    print ("path = " + str(path))
+    if os.path.isdir(path):
+        logging.info("path = {} existed".format(path))
+    else:
+        logging.info("path = {} not existed, create...".format(path))
+        os.mkdir(path)
 
 def save_data(json_data, dest_file):
+    path = '/'.join(dest_file.split("/")[:-1])
+    check_path_exist(path)
     with open(dest_file, 'a') as f:
         for i in range(len(json_data)):
             try:
@@ -39,11 +54,9 @@ if __name__ == '__main__':
     logging.info("processing date = {}".format(_date))
 
     print ("collect comment data ...")
-    url_comment = "https://api.pushshift.io/reddit/search/comment/?subreddit=TIdaL"
-    url_dest_file = "data/raw/{}/comment.json".format(_date)
-    run(url_comment, url_dest_file)
+    dest_path = SRC_BASE_PATH.format(_date=_date) + "/comment.json"
+    run(URL_COMMENT, dest_path)
 
     print ("collect submission data ...")
-    url_comment =  "https://api.pushshift.io/reddit/search/submission/?q=TIdaL"
-    url_dest_file = "data/raw/{}/submission.json".format(_date)
-    run(url_comment, url_dest_file)
+    dest_path = SRC_BASE_PATH.format(_date=_date) + "/submission.json"
+    run(URL_SUBMISSION, dest_path)
