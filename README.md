@@ -5,6 +5,7 @@
 ```bash
 # test
 sbt test
+
 # build
 sbt assembly
 
@@ -16,13 +17,15 @@ bash bin/run.sh <year-month-date>
 ## File structure
 ```
 ├── README.md
-├── bin    : trigger scripts
+├── bin    : main run script
 ├── build.sbt
 ├── data   : raw/output data
 ├── doc 
 ├── project
-├── src    : spark, python script process data
+├── src    : main application code (spark, python)
 └── target
+
+# built jar : target/scala-2.11/RedditScrapper-assembly-0.0.1.jar
 ```
 
 ## Demo
