@@ -26,7 +26,6 @@ bash bin/run.sh <year-month-date>
 ```
 
 ## Demo
-
 <details>
 <summary>Demo</summary>
 
@@ -107,11 +106,10 @@ scala> comment_output.show()
 +--------------------+-------+-----+--------------------+---------------+----------+-----------+
 only showing top 20 rows
 
-
 scala>
 ```
 
 </details>
 
 ## Ref
-- [ref](https://github.com/yennanliu/RedditScrapper/blob/main/doc/ref.md)
+- [ref.md](https://github.com/yennanliu/RedditScrapper/blob/main/doc/ref.md)

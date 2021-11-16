@@ -1,4 +1,4 @@
-package common
+package com.yen.RedditScrapper.common
 
 import org.scalatest.{FunSuite}
 import org.apache.spark.SparkContext
