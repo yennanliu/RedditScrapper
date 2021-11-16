@@ -10,15 +10,16 @@ object Processor{
 
   def main(args: Array[String]): Unit = {
 
-//    if (args == 0){
-//      println("argument missing! : --yyyymmdd")
-//    }else{
-//
-//      println("will use default one : yyyymmdd = later")
-//      java.time.LocalDate.now
-//    }
+    var yearMonthDate:String = null
 
-    val yearMonthDate:String = java.time.LocalDate.now.toString //args(0)
+    if (args.length == 0){
+      println("argument missing! : --yyyymmdd, will use today")
+      yearMonthDate = java.time.LocalDate.now.toString
+    }else{
+      println("*** args(0) = " + args(0).toString)
+      yearMonthDate = args(0).split("=")(1)
+    }
+
     // println("args = " + args.toString)
     // val yearMonthDate:String = args(0)
 
