@@ -3,6 +3,8 @@
 
 ## Run
 ```bash
+# test
+sbt test
 # build
 sbt assembly
 
@@ -11,9 +13,17 @@ sbt assembly
 bash bin/run.sh <year-month-date>
 ```
 
-## Test
-```bash
-sbt test
+
+## File structure
+```
+├── README.md
+├── bin    : trigger scripts
+├── build.sbt
+├── data   : raw/output data
+├── doc 
+├── project
+├── src    : spark, python script process data
+└── target
 ```
 
 ## Demo
@@ -103,13 +113,3 @@ scala>
 ```
 
 </details>
-
-## Ref
-- Example endpoints
-	- submission
-		- https://api.pushshift.io/reddit/search/submission/?q=TIdaL
-	- comment
-		- https://api.pushshift.io/reddit/search/comment/?subreddit=TIdaL
-- Doc
-	- https://github.com/pushshift/api
-	- https://www.reddit.com/r/TIdaL/
