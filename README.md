@@ -595,6 +595,8 @@ only showing top 20 rows
 
 
 scala>
+      
+scala> val submission_output =  spark.read.parquet("./data/output/2021-11-13/submission")
 
 scala> submission_output.show()
 +--------------------+--------------------+------+------------+------------+--------------------+-----+-----------+--------------------+---------------+------------+
